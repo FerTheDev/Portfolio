@@ -11,10 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder1\" />
-    <Folder Include="NewFolder2\" />
-    <Folder Include="NewFolder3\" />
-    <Folder Include="NewFolder\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>
