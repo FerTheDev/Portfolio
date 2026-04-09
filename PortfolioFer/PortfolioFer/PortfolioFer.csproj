@@ -7,6 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\HelloWorld\Interfaces\**" />
+    <Compile Remove="Features\Profile\Interfaces\**" />
+    <Compile Remove="Features\UserManagement\Interfaces\**" />
+    <Content Remove="Features\HelloWorld\Interfaces\**" />
+    <Content Remove="Features\Profile\Interfaces\**" />
+    <Content Remove="Features\UserManagement\Interfaces\**" />
+    <EmbeddedResource Remove="Features\HelloWorld\Interfaces\**" />
+    <EmbeddedResource Remove="Features\Profile\Interfaces\**" />
+    <EmbeddedResource Remove="Features\UserManagement\Interfaces\**" />
+    <None Remove="Features\HelloWorld\Interfaces\**" />
+    <None Remove="Features\Profile\Interfaces\**" />
+    <None Remove="Features\UserManagement\Interfaces\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
@@ -17,17 +32,17 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Features\Auth\Controllers\" />
-    <Folder Include="Features\Auth\Interfaces\" />
-    <Folder Include="Features\Auth\Dtos\" />
-    <Folder Include="Features\Auth\Repositories\" />
-    <Folder Include="Features\Auth\Services\" />
-    <Folder Include="Features\HelloWorld\Interfaces\" />
     <Folder Include="Features\HelloWorld\Dtos\" />
     <Folder Include="Features\HelloWorld\Repositories\" />
     <Folder Include="Features\HelloWorld\Services\" />
-    <Folder Include="Features\Profile\" />
-    <Folder Include="Features\UserManagement\" />
+    <Folder Include="Features\Profile\Controllers\" />
+    <Folder Include="Features\Profile\Dtos\" />
+    <Folder Include="Features\Profile\Repositories\" />
+    <Folder Include="Features\Profile\Services\" />
+    <Folder Include="Features\UserManagement\Controllers\" />
+    <Folder Include="Features\UserManagement\Dtos\" />
+    <Folder Include="Features\UserManagement\Repositories\" />
+    <Folder Include="Features\UserManagement\Services\" />
   </ItemGroup>
 
 </Project>
