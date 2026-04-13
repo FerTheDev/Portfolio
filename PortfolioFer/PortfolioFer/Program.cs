@@ -1,3 +1,5 @@
+using PortfolioFer.Features.Profile.Repositories;
+using PortfolioFer.Features.Profile.Services;
 using PortfolioFer.Features.Projects.Repositories;
 using PortfolioFer.Features.Projects.Services;
 
@@ -11,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 
 var app = builder.Build();
 

@@ -35,10 +35,6 @@
     <Folder Include="Features\HelloWorld\Dtos\" />
     <Folder Include="Features\HelloWorld\Repositories\" />
     <Folder Include="Features\HelloWorld\Services\" />
-    <Folder Include="Features\Profile\Controllers\" />
-    <Folder Include="Features\Profile\Dtos\" />
-    <Folder Include="Features\Profile\Repositories\" />
-    <Folder Include="Features\Profile\Services\" />
     <Folder Include="Features\UserManagement\Controllers\" />
     <Folder Include="Features\UserManagement\Dtos\" />
     <Folder Include="Features\UserManagement\Repositories\" />
