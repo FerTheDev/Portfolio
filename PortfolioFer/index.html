@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfólio da Fer</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #020617;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .container {
+            padding: 40px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        /* PROFILE */
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #020617;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #38bdf8;
+        }
+
+        .skills {
+            margin-top: 10px;
+        }
+
+        .skill {
+            display: inline-block;
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 6px 10px;
+            border-radius: 8px;
+            margin: 4px;
+            font-size: 14px;
+            border: 1px solid #38bdf8;
+            transition: 0.3s;
+        }
+
+            .skill:hover {
+                background: #38bdf8;
+                color: #0f172a;
+            }
+
+        /* PROJECTS */
+
+        .project-card {
+            background: #020617;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+            .project-card:hover {
+                transform: scale(1.02);
+                border-color: #38bdf8;
+            }
+
+        .project-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+
+        .project-description {
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: #0f172a;
+            background: #38bdf8;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+            .project-link:hover {
+                background: #0ea5e9;
+            }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Portfólio da Fer 💻</h1>
+        <p>Backend Developer em formação</p>
+    </header>
+
+    <div class="container">
+        <h2>Sobre mim</h2>
+        <div id="profile"></div>
+    </div>
+
+    <div class="container">
+        <h2>Meus Projetos</h2>
+        <div id="projects"></div>
+    </div>
+
+    <script>
+        // PROFILE
+        fetch("https://localhost:7217/profile")
+            .then(res => res.json())
+            .then(data => {
+                const profileDiv = document.getElementById("profile");
+
+                profileDiv.innerHTML = `
+                    <div class="profile-container">
+                        <img src="images/foto.jpg" class="profile-img" />
+
+                        <div>
+                            <h3>${data.name}</h3>
+                            <p><strong>${data.role}</strong></p>
+                            <p>${data.description}</p>
+
+                            <div class="skills">
+                                ${data.skills.map(skill =>
+                    `<span class="skill">${skill}</span>`
+                ).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            })
+            .catch(error => console.error("Erro no profile:", error));
+
+        // PROJECTS
+        fetch("https://localhost:7217/projects")
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById("projects");
+
+                data.forEach(project => {
+                    const card = document.createElement("div");
+                    card.className = "project-card";
+
+                    card.innerHTML = `
+                        <div class="project-title">${project.name}</div>
+                        <div class="project-description">${project.description}</div>
+                        <a class="project-link" href="${project.githubUrl}" target="_blank">
+                            Ver no GitHub
+                        </a>
+                    `;
+
+                    container.appendChild(card);
+                });
+            })
+            .catch(error => console.error("Erro nos projetos:", error));
+    </script>
+
+</body>
+</html>
