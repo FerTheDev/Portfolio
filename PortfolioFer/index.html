@@ -132,30 +132,13 @@
 
     <script>
         // PROFILE
-        fetch("https://localhost:7217/profile")
-            .then(res => res.json())
-            .then(data => {
-                const profileDiv = document.getElementById("profile");
-
-                profileDiv.innerHTML = `
-                    <div class="profile-container">
-                        <img src="images/foto.jpg" class="profile-img" />
-
-                        <div>
-                            <h3>${data.name}</h3>
-                            <p><strong>${data.role}</strong></p>
-                            <p>${data.description}</p>
-
-                            <div class="skills">
-                                ${data.skills.map(skill =>
-                    `<span class="skill">${skill}</span>`
-                ).join('')}
-                            </div>
-                        </div>
-                    </div>
-                `;
-            })
-            .catch(error => console.error("Erro no profile:", error));
+            fetch("https://localhost:7217/profile")
+                .then(res => res.text())
+                .then(data => {
+                        console.log("RESPOSTA:", data);
+                    document.getElementById("profile").innerHTML = data;
+                })
+                .catch(error => console.error("ERRO:", error));
 
         // PROJECTS
         fetch("https://localhost:7217/projects")
