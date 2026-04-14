@@ -1,0 +1,106 @@
+/* RESET */
+html, body {
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+/* BACKGROUND */
+body {
+    font-family: Arial, sans-serif;
+    color: #f1f5f9;
+    background-image: url("Images/foto.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* HEADER */
+.top-header {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+/* MENU LATERAL */
+.side-menu {
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+}
+
+/* BOTÕES */
+.btn {
+    color: #38bdf8;
+    text-decoration: none;
+    border: 1px solid #38bdf8;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+    .btn:hover {
+        background: #38bdf8;
+        color: #0f172a;
+    }
+
+/* SEÇÕES */
+.section {
+    padding: 120px 40px;
+    max-width: 900px;
+    margin: 40px auto;
+    background: rgba(2, 6, 23, 0.6);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+}
+
+/* PROJETOS */
+.project-card {
+    background: #020617;
+    border: 1px solid #1e293b;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+    .project-card a {
+        color: #38bdf8;
+        text-decoration: none;
+    }
+
+/* SKILLS */
+.skills-slider {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.skills-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scrollSkills 12s linear infinite;
+}
+
+.skill {
+    background: #1e293b;
+    color: #38bdf8;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #38bdf8;
+    white-space: nowrap;
+}
+
+/* ANIMAÇÃO */
+@keyframes scrollSkills {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
