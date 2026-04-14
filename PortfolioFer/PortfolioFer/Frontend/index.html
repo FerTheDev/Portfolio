@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfólio da Fer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="top-header">
+        <h1>Fernanda Krokoscz</h1>
+        <p>Desenvolvedora de Software • Em evolução constante</p>
+    </header>
+
+    <!-- MENU LATERAL -->
+    <nav class="side-menu">
+        <a href="#sobre" class="btn">Sobre mim</a>
+        <a href="#projetos" class="btn">Projetos</a>
+        <a href="#skills" class="btn">Skills</a>
+    </nav>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="section">
+        <h2>Sobre mim</h2>
+        <p>
+            Desenvolvedora de software em evolução, com foco em desenvolvimento fullstack.
+            Tenho me dedicado à construção de projetos práticos utilizando C# no back-end e
+            tecnologias web no front-end.
+        </p>
+        <p>
+            Busco sempre evoluir minhas habilidades e criar soluções eficientes, com código limpo
+            e boas práticas.
+        </p>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos" class="section">
+        <h2>Meus Projetos</h2>
+        <div id="projects"></div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+
+        <div class="skills-slider">
+            <div class="skills-track">
+                <span class="skill">C#</span>
+                <span class="skill">.NET</span>
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+
+                <!-- duplicado pra loop infinito -->
+                <span class="skill">C#</span>
+                <span class="skill">.NET</span>
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCRIPT PROJETOS -->
+    <script>
+        fetch("https://localhost:7217/projects")
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById("projects");
+
+                data.forEach(project => {
+                    const card = document.createElement("div");
+                    card.className = "project-card";
+
+                    card.innerHTML = `
+                        <h3>${project.name}</h3>
+                        <p>${project.description}</p>
+                        <a href="${project.githubUrl}" target="_blank">Ver no GitHub</a>
+                    `;
+
+                    container.appendChild(card);
+                });
+            })
+            .catch(error => console.error(error));
+    </script>
+
+</body>
+</html>
