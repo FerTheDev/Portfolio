@@ -1,4 +1,5 @@
-﻿using PortfolioFer.Features.Projects.Dtos;
+﻿using PortfolioFer.Database.Entities;
+using PortfolioFer.Features.Projects.Dtos;
 
 namespace PortfolioFer.Features.Projects.Repositories
 {
@@ -6,6 +7,6 @@ namespace PortfolioFer.Features.Projects.Repositories
     {
         Task<List<ProjectResponseDto>> GetAll();
         Task<ProjectResponseDto> GetById(int id);
-        Task Create(ProjectResponseDto project);
+        Task Create(Project project);
     }
 }

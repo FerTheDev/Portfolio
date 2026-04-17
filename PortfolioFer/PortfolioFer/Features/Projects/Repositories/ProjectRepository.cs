@@ -1,28 +1,51 @@
-﻿using PortfolioFer.Features.Projects.Dtos;
+﻿using Microsoft.EntityFrameworkCore;
+using PortfolioFer.Database.Context;
+using PortfolioFer.Database.Entities;
+using PortfolioFer.Features.Projects.Dtos;
 
 namespace PortfolioFer.Features.Projects.Repositories
 {
     public class ProjectRepository : IProjectRepository
     {
-        private static List<ProjectResponseDto> _projects = new();
+        private readonly AppDbContext _context;
 
-        public Task<List<ProjectResponseDto>> GetAll()
+        public ProjectRepository(AppDbContext context)
         {
-            return Task.FromResult(_projects);
+            _context = context;
         }
 
-        public Task<ProjectResponseDto> GetById(int id)
+        public async Task<List<ProjectResponseDto>> GetAll()
         {
-            var project = _projects.FirstOrDefault(p => p.Id == id);
-            return Task.FromResult(project);
+            return await _context.Projects
+                .Select(p => new ProjectResponseDto
+                {
+                    Id = p.Id,
+                    Name = p.Title,
+                    Description = p.Description,
+                    GithubUrl = p.Link
+                })
+                .ToListAsync();
         }
 
-        public Task Create(ProjectResponseDto project)
+        public async Task<ProjectResponseDto> GetById(int id)
         {
-            project.Id = _projects.Count + 1;
-            _projects.Add(project);
+            var project = await _context.Projects.FindAsync(id);
 
-            return Task.CompletedTask;
+            if (project == null) return null;
+
+            return new ProjectResponseDto
+            {
+                Id = project.Id,
+                Name = project.Title,
+                Description = project.Description,
+                GithubUrl = project.Link
+            };
+        }
+
+        public async Task Create(Project project)
+        {
+            await _context.Projects.AddAsync(project);
+            await _context.SaveChangesAsync();
         }
     }
 }

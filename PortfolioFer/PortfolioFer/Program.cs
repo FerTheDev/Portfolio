@@ -1,7 +1,11 @@
-﻿using PortfolioFer.Features.Profile.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using PortfolioFer.Database;
+using PortfolioFer.Database.Context;
+using PortfolioFer.Features.Profile.Repositories;
 using PortfolioFer.Features.Profile.Services;
 using PortfolioFer.Features.Projects.Repositories;
 using PortfolioFer.Features.Projects.Services;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// 🔥 BANCO DE DADOS
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Dependency Injection
 builder.Services.AddScoped<IProjectService, ProjectService>();
