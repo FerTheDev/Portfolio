@@ -42,5 +42,16 @@ namespace PortfolioFer.Features.Projects.Controllers
             await _service.Create(request);
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var success = await _service.Delete(id);
+
+            if (!success)
+                return NotFound("Project not found");
+
+            return Ok();
+        }
     }
 }

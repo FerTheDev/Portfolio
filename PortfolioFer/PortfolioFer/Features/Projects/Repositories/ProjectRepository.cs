@@ -47,5 +47,18 @@ namespace PortfolioFer.Features.Projects.Repositories
             await _context.Projects.AddAsync(project);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<bool> Delete(int id)
+        {
+            var project = await _context.Projects.FindAsync(id);
+
+            if (project == null)
+                return false;
+
+            _context.Projects.Remove(project);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

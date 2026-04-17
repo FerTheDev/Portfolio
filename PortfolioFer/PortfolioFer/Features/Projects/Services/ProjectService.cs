@@ -39,5 +39,10 @@ namespace PortfolioFer.Features.Projects.Services
 
             await _repository.Create(project);
         }
+
+        public async Task<bool> Delete(int id)
+        {
+            return await _repository.Delete(id);
+        }
     }
 }
