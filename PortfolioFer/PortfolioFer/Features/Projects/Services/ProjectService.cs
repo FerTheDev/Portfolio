@@ -1,4 +1,5 @@
-﻿using PortfolioFer.Features.Projects.Dtos;
+﻿using PortfolioFer.Database.Entities;
+using PortfolioFer.Features.Projects.Dtos;
 using PortfolioFer.Features.Projects.Repositories;
 
 namespace PortfolioFer.Features.Projects.Services
@@ -29,11 +30,11 @@ namespace PortfolioFer.Features.Projects.Services
 
         public async Task Create(CreateProjectRequestDto request)
         {
-            var project = new ProjectResponseDto
+            var project = new Project
             {
-                Name = request.Name,
+                Title = request.Name,
                 Description = request.Description,
-                GithubUrl = request.GithubUrl
+                Link = request.GithubUrl
             };
 
             await _repository.Create(project);

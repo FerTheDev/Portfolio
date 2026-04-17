@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PortfolioFer.Features.Profile.Entities;
-using PortfolioFer.Features.Projects.Entities;
+using PortfolioFer.Database.Entities;
 using System.Collections.Generic;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace PortfolioFer.Database
+namespace PortfolioFer.Database.Context
 {
     public class AppDbContext : DbContext
     {
