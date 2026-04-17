@@ -12,5 +12,6 @@ namespace PortfolioFer.Database.Context
 
         public DbSet<Project> Projects { get; set; }
         public DbSet<Profile> Profiles { get; set; }
+        public DbSet<GroceryItem> GroceryItems { get; set; }
     }
 }
