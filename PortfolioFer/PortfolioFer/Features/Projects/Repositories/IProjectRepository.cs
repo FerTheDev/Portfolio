@@ -8,5 +8,6 @@ namespace PortfolioFer.Features.Projects.Repositories
         Task<List<ProjectResponseDto>> GetAll();
         Task<ProjectResponseDto> GetById(int id);
         Task Create(Project project);
+        Task<bool> Delete(int id);
     }
 }
